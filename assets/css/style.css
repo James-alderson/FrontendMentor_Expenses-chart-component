@@ -1,0 +1,73 @@
+/* ------ Table of content
+
+1. Webfonts
+   1.1 DM Sans
+2. Custom property
+2. Global styles
+3. Typography
+4. Components
+   4.1 card
+
+----------------------- */
+
+/* ===============
+   Webfonts
+   =============== */
+/* ---- DM Sans ---- */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap");
+
+/* ===============
+   Custom property
+   =============== */
+:root {
+	--Soft-red: hsl(10, 79%, 65%);
+	--Cyan: hsl(186, 34%, 60%);
+	--Dark-brown: hsl(25, 47%, 15%);
+	--Medium-brown: hsl(28, 10%, 53%);
+	--Cream: hsl(27, 66%, 92%);
+	--Very-pale-orange: hsl(33, 100%, 98%);
+}
+
+/* ===============
+   Global styles
+   =============== */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 18px;
+}
+
+body {
+	display: grid;
+	height: 100vh;
+	place-items: center;
+	color: var(--Dark-brown);
+	font-family: "DM Sans", sans-serif;
+	line-height: 1.5;
+	margin: 0;
+	background-color: var(--Cream);
+}
+
+/* ===============
+   Typography
+   =============== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	line-height: 1;
+	margin: 1rem 0;
+}
+
+/* ===============
+   Components
+   =============== */
+/* ---- card ---- */
+.card {
+}
