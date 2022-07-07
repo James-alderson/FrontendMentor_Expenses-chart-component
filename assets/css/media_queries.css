@@ -1,6 +1,7 @@
 /* ---- Desktop resolution ---- */
 @media (min-width: 600px) {
 	.card {
+		width: 485px;
 		width: clamp(300px, 485px, calc(100% - 1.8rem));
 		border-radius: 19px;
 	}
