@@ -1,6 +1,4 @@
 const ctx = document.querySelector(".card-chart").getContext('2d');
-let labes = []
-let chartData = []
 
 // Change chart defaults styles
 Chart.defaults.font.size = 11
@@ -8,9 +6,9 @@ Chart.defaults.font.family = "DM Sans"
 Chart.defaults.color = "hsl(28, 10%, 53%)"
 
 const data = {
-  labels: labes,
+  labels: [],
   datasets: [{
-    data: chartData,
+    data: [],
     backgroundColor: [
       "hsl(10, 79%, 65%)",
       "hsl(10, 79%, 65%)",
@@ -111,20 +109,23 @@ const myChart = new Chart(ctx, config)
 // ---- This section for get data from json file and show on chart ----
 
 const loadData = () => {
-  // Create Fetch request, after send data to addFunc function, update the chart
+  // Create Fetch request, and send data to addFunc function
   fetch("data.json")
     .then(response => response.json())
     .then(dataCh => {
       dataCh.forEach(addFunc)
-      myChart.update()
     })
 }
 
-// After received data from json file, added data to chart data
+// After received data from json file, update the chart data
+// Remember: with looping on datasets array, we having the access to array or data available in the datasets array
 function addFunc(chart) {
-  labes.push(chart.day)
-  chartData.push(chart.amount)
+  config.data.labels.push(chart.day)
+  config.data.datasets.forEach((datasetData) => {
+    datasetData.data.push(chart.amount)
+  })
+  myChart.update()
 }
 
-// window event listener
+// Call loadData function
 window.addEventListener("load", loadData)
