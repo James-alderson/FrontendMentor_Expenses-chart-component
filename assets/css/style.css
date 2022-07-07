@@ -1,4 +1,4 @@
-/* ------ Table of content
+/* ------ Table of content ------
 
 1. Webfonts
    1.1 DM Sans
@@ -9,7 +9,7 @@
    4.1 card
    4.2 h-line
 
------------------------ */
+------------------------------ */
 
 /* ===============
    Webfonts
@@ -35,7 +35,8 @@
 *,
 *::before,
 *::after {
-	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+					box-sizing: border-box;
 }
 
 html {
@@ -71,6 +72,7 @@ h6 {
    =============== */
 /* ---- card ---- */
 .card {
+	width: 340px;
 	width: clamp(300px, 340px, calc(100% - 1.8rem));
 	margin: 2rem 0.9rem;
 	border-radius: 11px;
@@ -81,6 +83,7 @@ h6 {
 }
 
 .card-header {
+	display: -webkit-box;
 	display: flex;
 	color: var(--Very-pale-orange);
 	padding: 0.85rem 1.3rem 1.38rem 1.1rem;
@@ -118,10 +121,12 @@ h6 {
 	max-width: 100%;
 	max-height: 200px;
 	margin: 1.85rem 0 1.25rem 0;
-	transform: scaleX(1.04);
+	-webkit-transform: scaleX(1.04);
+					transform: scaleX(1.04);
 }
 
 .card-main-content {
+	display: -webkit-box;
 	display: flex;
 	justify-content: space-between;
 }
