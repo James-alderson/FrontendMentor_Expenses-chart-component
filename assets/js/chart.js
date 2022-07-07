@@ -48,6 +48,10 @@ const config = {
         // Tooltip arrow size
         caretSize: 0,
         displayColors: false,
+        bodyFont: {
+          size: 12
+        },
+        padding: 6,
         // Tooltip position
         yAlign: "bottom",
         titleAlign: "center",
@@ -95,7 +99,7 @@ const config = {
         },
         // Hide chart left side ticks
         ticks: {
-          display: false
+          display: false,
         }
       }
     }
@@ -129,3 +133,61 @@ function addFunc(chart) {
 
 // Call loadData function
 window.addEventListener("load", loadData)
+
+
+// ---- This section for change chart data by according window resolution ----
+// Check after the change window resolution
+const updateFunc = () => {
+  config.data.datasets.forEach((datasetData) => {
+    if (window.innerWidth >= 600) {
+      datasetData.barThickness = 45
+      datasetData.borderRadius = 6
+    } else {
+      datasetData.barThickness = 33
+      datasetData.borderRadius = 4
+    }
+  })
+
+  if (window.innerWidth >= 600) {
+    Chart.defaults.font.size = 13
+    config.options.plugins.tooltip.cornerRadius = 5
+    config.options.plugins.tooltip.bodyFont.size = 16
+    config.options.plugins.tooltip.padding = 8
+  } else {
+    Chart.defaults.font.size = 11
+    config.options.plugins.tooltip.cornerRadius = 3
+    config.options.plugins.tooltip.bodyFont.size = 12
+    config.options.plugins.tooltip.padding = 6
+  }
+
+  myChart.update()
+}
+
+// Call updateFunc function
+window.addEventListener("resize", updateFunc)
+
+
+// Check before the change window resolution
+config.data.datasets.forEach((datasetData) => {
+  if (window.innerWidth >= 600) {
+    datasetData.barThickness = 44
+    datasetData.borderRadius = 6
+  } else {
+    datasetData.barThickness = 33
+    datasetData.borderRadius = 4
+  }
+
+  if (window.innerWidth >= 600) {
+    Chart.defaults.font.size = 13
+    config.options.plugins.tooltip.cornerRadius = 5
+    config.options.plugins.tooltip.bodyFont.size = 16
+    config.options.plugins.tooltip.padding = 8
+  } else {
+    Chart.defaults.font.size = 11
+    config.options.plugins.tooltip.cornerRadius = 3
+    config.options.plugins.tooltip.bodyFont.size = 12
+    config.options.plugins.tooltip.padding = 6
+  }
+
+  myChart.update()
+})
